@@ -8,7 +8,7 @@
 	"scripts": {
 		"start": "parcel src/index.html",
 		"build": "parcel build src/index.html --out-dir dist",
-		"heroku-postbuild": "parcel build public/index.html",
+		"heroku-postbuild": "parcel build src/index.html --out-dir dist",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "supertommy",
