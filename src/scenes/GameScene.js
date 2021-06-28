@@ -6,7 +6,7 @@ import BombSpawner from './BombSpawner'
 const GROUND_KEY = 'ground'
 const FOREST_KEY = 'forest'
 const DUDE_KEY = 'dude'
-const STAR_KEY = 'start'
+const STAR_KEY = 'star'
 const BOMB_KEY = 'bomb'
 
 export default class GameScene extends Phaser.Scene
@@ -28,6 +28,7 @@ export default class GameScene extends Phaser.Scene
 		this.load.image(GROUND_KEY, 'assets/platform.png')
 		this.load.image(STAR_KEY, 'assets/shroom.png')
 		this.load.image(BOMB_KEY, 'assets/bomb.png')
+        this.load.image('restart', 'assets/restart.png')
 
 		this.load.spritesheet(DUDE_KEY, 
 			'assets/dude.png',
@@ -90,6 +91,13 @@ export default class GameScene extends Phaser.Scene
 		player.anims.play('turn')
 
 		this.gameOver = true
+
+        const restartButton = this.physics.add.image(300, 600, 'restart')
+        restartButton.setVelocity(50, 100)
+        restartButton.setBounce(1, 1)
+        restartButton.setCollideWorldBounds(true)
+        restartButton.setInteractive();
+        restartButton.on('pointerdown', () => { this.scene.start('game-scene'); });
 	}
     collectStar (player, star) {
         star.disableBody(true, true)

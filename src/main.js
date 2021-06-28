@@ -13,7 +13,7 @@ const config = {
 			gravity: { y: 300 }
 		}
 	},
-	scene: [GameScene]
+	scene: [HelloWorldScene, GameScene]
 }
 
 export default new Phaser.Game(config)
